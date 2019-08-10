@@ -1,0 +1,1 @@
+Infusion.DemoManager.seed!()
