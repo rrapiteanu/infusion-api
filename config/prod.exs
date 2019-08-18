@@ -4,10 +4,7 @@ use Mix.Config
 config :logger, level: :info
 
 config :infusion, InfusionWeb.Endpoint,
-  http: [port: System.get_env("PORT")],
   url: [host: System.get_env("RENDER_EXTERNAL_HOSTNAME") || "localhost", port: 80],
-  secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE"),
-  server: true,
   check_origin: ["https://infusion.rrapiteanu.now.sh"]
 
 config :infusion, Infusion.Repo,
@@ -16,9 +13,3 @@ config :infusion, Infusion.Repo,
   database: "",
   ssl: true,
   pool_size: 2
-
-config :infusion, Infusion.Scheduler,
-  timezone: "Romania/Bucharest",
-  jobs: [
-    {"@weekly", {Infusion.DemoManager, :reset_and_seed_database!, []}}
-  ]

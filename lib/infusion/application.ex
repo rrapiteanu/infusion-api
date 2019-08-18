@@ -14,8 +14,6 @@ defmodule Infusion.Application do
       InfusionWeb.Endpoint,
       # Start Absinthe subscriptions
       {Absinthe.Subscription, [InfusionWeb.Endpoint]},
-      # Run scheduled tasks
-      Infusion.Scheduler
       # Starts a worker by calling: Infusion.Worker.start_link(arg)
       # {Infusion.Worker, arg},
     ]
