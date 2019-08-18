@@ -5,6 +5,7 @@ defmodule InfusionWeb.Resolvers.PostResolver do
     {:ok, Post.all()}
   end
 
+
   def show(_parent, args, _resolutions) do
     case Post.find(args[:id]) do
       nil -> {:error, "Not found"}

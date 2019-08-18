@@ -9,6 +9,14 @@ defmodule InfusionWeb.Resolvers.UserResolver do
     {:error, "Unauthenticated"}
   end
 
+  def get_user(_parent, args, %{context: %{current_user: current_user}}) do
+    {:ok, User.get(args[:id])}
+  end
+
+  def get_user(_parent, _args, _resolutions) do
+    {:error, "Unauthenticated"}
+  end
+
   def current_user(_parent, _args, %{context: %{current_user: current_user}}) do
     {:ok, current_user}
   end

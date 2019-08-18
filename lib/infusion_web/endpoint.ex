@@ -5,7 +5,7 @@ defmodule InfusionWeb.Endpoint do
 
   origin =
     case Mix.env() do
-      :prod -> ["https://infusion-demo.herokuapp.com"]
+      :prod -> ["https://infusion.rrapiteanu.now.sh"]
       _ -> false
     end
 
@@ -27,7 +27,8 @@ defmodule InfusionWeb.Endpoint do
     pass: ["*/*"],
     json_decoder: Phoenix.json_library()
 
-  plug CORSPlug
+  plug CORSPlug, origin: ["http://localhost:3000", "http://localhost:4000", "https://infusion.rrapiteanu.now.sh"]
+
 
   plug InfusionWeb.Router
 end

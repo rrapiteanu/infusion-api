@@ -24,6 +24,10 @@ defmodule Infusion.User do
     )
   end
 
+  def get(id) do
+    Repo.get(__MODULE__, id)
+  end
+
   def changeset(%__MODULE__{} = user, attrs) do
     user
     |> cast(attrs, [:name, :email, :password])

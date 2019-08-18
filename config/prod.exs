@@ -5,10 +5,10 @@ config :logger, level: :info
 
 config :infusion, InfusionWeb.Endpoint,
   http: [port: System.get_env("PORT")],
-  url: [host: System.get_env("APP_NAME") <> ".gigalixirapp.com", port: 80],
+  url: [host: System.get_env("RENDER_EXTERNAL_HOSTNAME") || "localhost", port: 80],
   secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE"),
   server: true,
-  check_origin: ["https://infusion-demo.herokuapp.com"]
+  check_origin: ["https://infusion.rrapiteanu.now.sh"]
 
 config :infusion, Infusion.Repo,
   adapter: Ecto.Adapters.Postgres,

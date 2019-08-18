@@ -1,7 +1,7 @@
 defmodule InfusionWeb.Schema.UserTypes do
   use Absinthe.Schema.Notation
 
-  import Absinthe.Resolution.Helpers, only: [dataloader: 1]
+  import Absinthe.Resolution.Helpers, only: [dataloader: 1, dataloader: 3]
 
   alias InfusionWeb.{Data, Resolvers}
 
@@ -32,6 +32,12 @@ defmodule InfusionWeb.Schema.UserTypes do
     @desc "Get current user"
     field :current_user, :user do
       resolve(&Resolvers.UserResolver.current_user/3)
+    end
+
+    @desc "Get user by id"
+    field :user, :user do
+      arg(:id, non_null(:id))
+      resolve(&Resolvers.UserResolver.get_user/3)
     end
   end
 
